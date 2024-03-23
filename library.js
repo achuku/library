@@ -10,5 +10,8 @@ function Book(title, author, pages, read){
     };
 } 
 
-const book1 = new Book('The Hobbit', 'by J.R.R Tolkien', '295 pages', 'not read yet');
-book1.info();
+    const book1 = new Book('The Hobbit', 'by J.R.R Tolkien,', '295 pages,', 'not read yet');
+    myLibrary.push(book1);
+
+
+console.log(myLibrary);
