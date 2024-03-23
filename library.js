@@ -1,25 +1,18 @@
 const myLibrary = [];
 
-function Book(title, author, pages, isRead){
+function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.isRead = isRead;
-    let read;
-        if(!isRead){
-            read = 'not read yet';
-        } else if (isRead) {
-            read = 'read';  
-        } 
-    this.info = function(){
-        return (`${this.title} by ${this.author}, ${this.pages}, ${read} `);
-    }
-        
+    this.read = read;
+    this.info = () => {
+        console.log(this.title, this.author, this.pages, this.read) ;
     };
+} 
 
-
-
-    const book1 = new Book('The Hobbit', 'by J.R.R Tolkien', '295 pages', 'read'  );
+    const book1 = new Book('The Hobbit', 'by J.R.R Tolkien,', '295 pages,', 'not read yet');
     myLibrary.push(book1);
+    const book2 = new Book('Basic Life Skills for Success', 'by Sumbye Kapena', '96 pages', 'read');
+    myLibrary.push(book2);
 
 console.log(myLibrary);
