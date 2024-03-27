@@ -11,12 +11,13 @@ function Book(title, author, pages, read){
     };
 } 
 
-    //Add book to library
-    function addBookToLibrary(title, author, pages, read) {
-        const newBook = new Book(title, author, pages, read);
-        myLibrary.push(newBook);
-    }
-    addBookToLibrary('The Hobbit', 'by J.R.R Tolkien,', '295 pages,', 'not read yet');
+//Add book to library
+function addBookToLibrary(title, author, pages, read) {
+    const newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
+}
+addBookToLibrary('The Hobbit', 'J.R.R Tolkien', '295 pages', 'not read yet');
+addBookToLibrary('Basic Life Skills for Success', 'Sumbye Kapena', '96 pages', 'read');
 
 console.log(myLibrary);
 
@@ -25,8 +26,11 @@ let book = '';
 myLibrary.forEach(displayBook);
 
 function displayBook(item, index){
-   book += index + ':' + item + '<br>';
+   //book += index + ':' + item + '<br>';
    document.getElementById('display').innerHTML = book;
+   for(var key in myLibrary){
+    book += '<span>'+myLibrary[key].title+', '+ myLibrary[key].author+', '+ myLibrary[key].pages+', '+ myLibrary[key].read+'<br></span>';
+   }
    console.log(index, item);
 }
 
