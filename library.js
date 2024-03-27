@@ -26,10 +26,9 @@ let book = '';
 myLibrary.forEach(displayBook);
 
 function displayBook(item, index){
-   //book += index + ':' + item + '<br>';
    document.getElementById('display').innerHTML = book;
    for(var key in myLibrary){
-    book += '<span>'+myLibrary[key].title+', '+ myLibrary[key].author+', '+ myLibrary[key].pages+', '+ myLibrary[key].read+'<br></span>';
+    book += ''+myLibrary[key].title+', '+ myLibrary[key].author+', '+ myLibrary[key].pages+', '+ myLibrary[key].read+'<br>';
    }
    console.log(index, item);
 }
