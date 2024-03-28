@@ -33,8 +33,12 @@ function displayBook(item, index){
    console.log(index, item);
 }
 
-//Buttons
-const addNewBook = document.getElementById('.addBook');
+//NEW BOOK button opens the dialog modally
+const dialog = document.querySelector('dialog');
+const addNewBook = document.getElementById('addBook')
+addNewBook.addEventListener('click', () => {
+    dialog.showModal();
+});
 
 
 
