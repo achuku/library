@@ -35,9 +35,15 @@ function displayBook(item, index){
 
 //NEW BOOK button opens the dialog modally
 const dialog = document.querySelector('dialog');
-const addNewBook = document.getElementById('addBook')
+const addNewBook = document.getElementById('newBook')
 addNewBook.addEventListener('click', () => {
     dialog.showModal();
+});
+
+//Close button closes the dialog
+const closeButton = document.getElementById('closeButton');
+closeButton.addEventListener('click', () => {
+    dialog.close(); 
 });
 
 
