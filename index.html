@@ -16,19 +16,9 @@
                 <input type="text" id="title" name="title">
                 <label for="author">Author</label>
                 <input type="text" id="author" name="author">
-                <label for="pages">Number of pages</label>
-                <select id="pages" name="pages">
-                    <option value="one">1</option>
-                    <option value="two">2</option>
-                    <option value="two">3</option>
-                    <option value="two">4</option>
-                    <option value="two">5</option>
-                    <option value="two">6</option>
-                    <option value="two">7</option>
-                    <option value="two">8</option>
-                    <option value="two">9</option>
-                    <option value="two">10</option>
-                </select> 
+                <label for="pages">Number of pages: </label>
+                <input type="range" id="pages" name="pages" min="0" max="1000" value="200" oninput="rangeValue.innerText = this.value">
+                <p id="rangeValue">1000</p>  
                 <fieldset id="read">
                     <legend>Have you read the book?</legend>
                     <label for="read">Yes</label>
@@ -36,9 +26,13 @@
                     <label for="notread">No</label>
                     <input type="radio" id="notread" name="read" value="read">
                 </fieldset>
-                <button id="addBook" type="submit">Add Book</button>
+                <div>
+                    <button id="addBook" type="submit">Add Book</button>
+                    <button autofocus id="closeButton">Close</button>
+                </div>
+                
             </form>
-            <button autofocus id="closeButton">Close</button>
+            
         </dialog>
         
     </div>
