@@ -11,9 +11,24 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 15px;
 }  
+
 .card {
   height: 250px;
   padding: 15px;
   border: 1px solid purple;
   position: relative;
+}
+
+.title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: larger;
+  font-weight: bold;
+  color: navy;
+}
+
+.author, .pages, .read {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  font-weight: lighter;
+  color: brown;
 }
