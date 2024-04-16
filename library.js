@@ -21,14 +21,14 @@ function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
 }
-addBookToLibrary('The Hobbit', 'J.R.R Tolkien', '295 pages', 'No');
-addBookToLibrary('Basic Life Skills for Success', 'Sumbye Kapena', '96 pages', 'Yes');
-addBookToLibrary('The Invention of Africa', 'V Y Mudimbe', '400 pages', 'No');
+addBookToLibrary('The Hobbit', 'J.R.R Tolkien', '295 ', 'No');
+addBookToLibrary('Basic Life Skills for Success', 'Sumbye Kapena', '96 ', 'Yes');
+addBookToLibrary('The Invention of Africa', 'V Y Mudimbe', '400 ', 'No');
 
 console.log(myLibrary);
 
 
-//Display each book in card
+//Display each book in its own card
 let book = '';
 myLibrary.forEach(displayBook);
 
@@ -72,22 +72,17 @@ function displayBook(item, index){
         read.textContent = `Read: ${item.read ? 'Yes' : 'No'}`;
     });
 
-    const removeButton = document.createElement('button');
-    removeButton.className = 'remove-button';
-    card.appendChild(removeButton);
-    removeButton.textContent = 'Remove Book';
-    removeButton.addEventListener('click', () => {
-        myLibrary.splice(index, 1);
-        displayBook(myLibrary);
-    });
+    // const removeButton = document.createElement('button');
+    // removeButton.className = 'remove-button';
+    // card.appendChild(removeButton);
+    // removeButton.textContent = 'Remove Book';
+    // removeButton.addEventListener('click', () => {
+    //     myLibrary.splice(index, 1);
+    //     displayBook();
+    // });
     
 }
-//    document.getElementById('display').innerHTML = book;
-//    for(var key in myLibrary){
-//     book += ''+myLibrary[key].title+', '+ myLibrary[key].author+', '+ myLibrary[key].pages+', '+ myLibrary[key].read+'<br>';
-//    }
-//console.log(index, item);
-//}
+
 
 //NEW BOOK button opens the dialog modally
 const dialog = document.querySelector('dialog');
@@ -97,13 +92,14 @@ newBook.addEventListener('click', () => {
 });
 
 //Close button closes the dialog
-const closeButton = document.getElementById('closeButton');
-closeButton.addEventListener('click', () => {
-    dialog.close(); 
-});
+// const closeButton = document.getElementById('closeButton');
+// closeButton.addEventListener('click', () => {
+//     dialog.close(); 
+// });
 
 //Form prints added book on new card
-document.getElementById('bookForm').addEventListener('submit', (e) => {
+const bookForm = document.getElementById('bookForm');
+bookForm.addEventListener('submit', (e) => {
     // Prevent the default form submission
     e.preventDefault();
 
@@ -118,8 +114,8 @@ document.getElementById('bookForm').addEventListener('submit', (e) => {
 
     //Add new book to library
     myLibrary.push(newBook);
-    //addBookToLibrary(newBook);
-    //bookForm.reset();
+
+    //Display updated list
     displayBook();
     
     // Reset the form fields
@@ -131,7 +127,6 @@ document.getElementById('bookForm').addEventListener('submit', (e) => {
     modal.close();
 });
 
-displayBook(myLibrary);
 
 
 
