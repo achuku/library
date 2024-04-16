@@ -26,12 +26,38 @@ let book = '';
 myLibrary.forEach(displayBook);
 
 function displayBook(item, index){
-   document.getElementById('display').innerHTML = book;
-   for(var key in myLibrary){
-    book += ''+myLibrary[key].title+', '+ myLibrary[key].author+', '+ myLibrary[key].pages+', '+ myLibrary[key].read+'<br>';
-   }
-   console.log(index, item);
+    const library = document.querySelector('.library');
+    const card = document.createElement('div');
+    card.classList.add('card');
+    library.appendChild(card);
+
+    const title = document.createElement('p');
+    title.classList.add('title');
+    card.appendChild(title);
+    title.textContent = item.title;
+
+    const author = document.createElement('p');
+    author.classList.add('author');
+    card.appendChild(author);
+    author.textContent = item.author;
+
+    const pages = document.createElement('p');
+    pages.classList.add('pages');
+    card.appendChild(pages);
+    pages.textContent = item.pages;
+
+    const read = document.createElement('p');
+    read.classList.add('read');
+    card.appendChild(read);
+    read.textContent = item.read;
+    
 }
+//    document.getElementById('display').innerHTML = book;
+//    for(var key in myLibrary){
+//     book += ''+myLibrary[key].title+', '+ myLibrary[key].author+', '+ myLibrary[key].pages+', '+ myLibrary[key].read+'<br>';
+//    }
+//console.log(index, item);
+//}
 
 //NEW BOOK button opens the dialog modally
 const dialog = document.querySelector('dialog');
