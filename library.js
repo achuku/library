@@ -11,6 +11,11 @@ function Book(title, author, pages, read){
     };
 } 
 
+// Add the toggleReadStatus method to the Book prototype
+Book.prototype.toggleReadStatus = function() {
+    this.read = !this.read; // Toggle the read status
+};
+
 //Add book to library
 function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
@@ -18,6 +23,7 @@ function addBookToLibrary(title, author, pages, read) {
 }
 addBookToLibrary('The Hobbit', 'J.R.R Tolkien', '295 pages', 'not read yet');
 addBookToLibrary('Basic Life Skills for Success', 'Sumbye Kapena', '96 pages', 'read');
+addBookToLibrary('The Invention of Africa', 'V Y Mudimbe', '400 pages', 'not read yet');
 
 console.log(myLibrary);
 
@@ -32,24 +38,34 @@ function displayBook(item, index){
     library.appendChild(card);
 
     const title = document.createElement('p');
-    title.classList.add('title');
+    title.className = 'title';
     card.appendChild(title);
     title.textContent = item.title;
 
     const author = document.createElement('p');
-    author.classList.add('author');
+    author.className = 'author';
     card.appendChild(author);
-    author.textContent = item.author;
+    author.textContent = `Author: ${item.author}`;
 
     const pages = document.createElement('p');
-    pages.classList.add('pages');
+    pages.className = 'pages';
     card.appendChild(pages);
-    pages.textContent = item.pages;
+    pages.textContent = `Pages: ${item.pages}`;
 
     const read = document.createElement('p');
-    read.classList.add('read');
+    read.className = 'read';
     card.appendChild(read);
-    read.textContent = item.read;
+    read.textContent = `Read: ${item.read}`;
+
+    const toggleButton = document.createElement('button');
+    toggleButton.className = 'toggle-button';
+    card.appendChild(toggleButton);
+    toggleButton.textContent = 'Change Read Status';
+    toggleButton.addEventListener('click', () => {
+        item.toggleReadStatus();
+
+        read.textContent = `Read: ${item.read ? 'Yes' : 'No'}`;
+    });
     
 }
 //    document.getElementById('display').innerHTML = book;
