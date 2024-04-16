@@ -103,27 +103,32 @@ closeButton.addEventListener('click', () => {
 });
 
 //Form prints added book on new card
-document.getElementById('#bookForm').addEventListener('submit', (e) => {
+document.getElementById('bookForm').addEventListener('submit', (e) => {
     // Prevent the default form submission
     e.preventDefault();
 
     // Get the values from the form fields
-    const title = document.getElementById('#title').value;
-    const author = document.getElementById('#author').value;
-    const pages = document.getElementById('#pages').value;
-    const read = document.getElementById('#read').checked;
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const read = document.getElementById('read').checked;
 
     //Create a new Book object
     const newBook = new Book(title, author, pages, read);
 
     //Add new book to library
-    //myLibrary.push(newBook);
-    addBookToLibrary(newBook);
+    myLibrary.push(newBook);
+    //addBookToLibrary(newBook);
     //bookForm.reset();
     displayBook();
-    bookForm.reset();
+    
+    // Reset the form fields
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('pages').value = '';
+    document.getElementById('read').checked = false;
     //updateLibraryInfo(myLibrary);
-    //modal.close();
+    modal.close();
 });
 
 displayBook(myLibrary);
