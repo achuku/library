@@ -16,23 +16,28 @@ Book.prototype.toggleReadStatus = function() {
     this.read = !this.read; // Toggle the read status
 };
 
-//Add book to library
+//Add book to library array
 function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
 }
-addBookToLibrary('The Hobbit', 'J.R.R Tolkien', '295 pages', 'not read yet');
-addBookToLibrary('Basic Life Skills for Success', 'Sumbye Kapena', '96 pages', 'read');
-addBookToLibrary('The Invention of Africa', 'V Y Mudimbe', '400 pages', 'not read yet');
+addBookToLibrary('The Hobbit', 'J.R.R Tolkien', '295 pages', 'No');
+addBookToLibrary('Basic Life Skills for Success', 'Sumbye Kapena', '96 pages', 'Yes');
+addBookToLibrary('The Invention of Africa', 'V Y Mudimbe', '400 pages', 'No');
 
 console.log(myLibrary);
 
-//Display books in library
+
+//Display each book in card
 let book = '';
 myLibrary.forEach(displayBook);
 
 function displayBook(item, index){
     const library = document.querySelector('.library');
+    // while (library.firstChild) {
+    //     library.removeChild(library.firstChild);
+    // }
+
     const card = document.createElement('div');
     card.classList.add('card');
     library.appendChild(card);
@@ -66,6 +71,15 @@ function displayBook(item, index){
 
         read.textContent = `Read: ${item.read ? 'Yes' : 'No'}`;
     });
+
+    const removeButton = document.createElement('button');
+    removeButton.className = 'remove-button';
+    card.appendChild(removeButton);
+    removeButton.textContent = 'Remove Book';
+    removeButton.addEventListener('click', () => {
+        myLibrary.splice(index, 1);
+        displayBook(myLibrary);
+    });
     
 }
 //    document.getElementById('display').innerHTML = book;
@@ -88,11 +102,31 @@ closeButton.addEventListener('click', () => {
     dialog.close(); 
 });
 
-//Add Book button prints added book
-const addBook = document.getElementById('addBook');
-addBook.addEventListener('click', () =>{
+//Form prints added book on new card
+document.getElementById('#bookForm').addEventListener('submit', (e) => {
+    // Prevent the default form submission
+    e.preventDefault();
 
+    // Get the values from the form fields
+    const title = document.getElementById('#title').value;
+    const author = document.getElementById('#author').value;
+    const pages = document.getElementById('#pages').value;
+    const read = document.getElementById('#read').checked;
+
+    //Create a new Book object
+    const newBook = new Book(title, author, pages, read);
+
+    //Add new book to library
+    //myLibrary.push(newBook);
+    addBookToLibrary(newBook);
+    //bookForm.reset();
+    displayBook();
+    bookForm.reset();
+    //updateLibraryInfo(myLibrary);
+    //modal.close();
 });
+
+displayBook(myLibrary);
 
 
 
